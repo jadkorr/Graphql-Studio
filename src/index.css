@@ -1,0 +1,614 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-bg: #07070d;
+  --color-panel: #0e0e18;
+  --color-panel-2: #131322;
+  --color-elev: #1a1a2e;
+  --color-line: #23233a;
+  --color-line-2: #2f2f4d;
+  --color-fg: #e7e7f3;
+  --color-dim: #9a9ab8;
+  --color-faint: #63637f;
+  --color-accent: #e535ab;
+  --color-accent-2: #8b5cf6;
+  --color-ok: #34d399;
+  --color-warn: #fbbf24;
+  --color-err: #fb7185;
+  /* semantic surfaces */
+  --color-input: #0a0a14;
+  --color-pop: rgba(16, 16, 29, 0.96);
+  --color-node: rgba(15, 15, 28, 0.95);
+  --color-hover: rgba(255, 255, 255, 0.045);
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-on-accent: #ffffff;
+  --color-track: #2a2a44;
+  /* semantic text */
+  --color-field: #93c5fd;
+  --color-field-muted: #a9b8de;
+  --color-keyword: #f472b6;
+  --color-arg: #fcd34d;
+  --color-dyn: #c4b5fd;
+  --color-sky: #38bdf8;
+}
+
+/* ---------- themes ----------
+   Each theme overrides the tokens above. "studio" is the default (no attribute needed). */
+:root {
+  --k-object: #a78bfa;
+  --k-input: #fbbf24;
+  --k-enum: #34d399;
+  --k-interface: #38bdf8;
+  --k-union: #f472b6;
+  --k-scalar: #94a3b8;
+  --k-object-bg: color-mix(in oklab, var(--k-object) 13%, transparent);
+  --k-input-bg: color-mix(in oklab, var(--k-input) 13%, transparent);
+  --k-enum-bg: color-mix(in oklab, var(--k-enum) 13%, transparent);
+  --k-interface-bg: color-mix(in oklab, var(--k-interface) 13%, transparent);
+  --k-union-bg: color-mix(in oklab, var(--k-union) 13%, transparent);
+  --k-scalar-bg: color-mix(in oklab, var(--k-scalar) 13%, transparent);
+  --grad: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
+  --scroll: #2b2b45;
+  --gutter: #3e3e5c;
+  --graph-dot: #26263d;
+  --glow-a: 10%;
+  --syn-keyword: #f472b6;
+  --syn-prop: #93c5fd;
+  --syn-var: #fda4af;
+  --syn-def: #c4b5fd;
+  --syn-type: #fcd34d;
+  --syn-string: #86efac;
+  --syn-number: #fdba74;
+  --syn-comment: #5c5c80;
+  --syn-attr: #67e8f9;
+  --syn-punct: #8a8aaa;
+  color-scheme: dark;
+}
+
+:root[data-theme='ocean'] {
+  --color-bg: #050a12;
+  --color-panel: #0a1220;
+  --color-panel-2: #0e1829;
+  --color-elev: #132137;
+  --color-line: #1b2a42;
+  --color-line-2: #263c5c;
+  --color-fg: #e3edf9;
+  --color-dim: #8ea5c3;
+  --color-faint: #587092;
+  --color-accent: #22d3ee;
+  --color-accent-2: #3b82f6;
+  --color-input: #060d18;
+  --color-pop: rgba(10, 18, 32, 0.96);
+  --color-node: rgba(10, 18, 32, 0.95);
+  --color-track: #20324f;
+  --scroll: #233652;
+  --gutter: #2f4566;
+  --graph-dot: #1a2a40;
+  --syn-keyword: #22d3ee;
+  --syn-def: #93c5fd;
+  --syn-comment: #4a6283;
+}
+
+:root[data-theme='forest'] {
+  --color-bg: #050c09;
+  --color-panel: #0a1410;
+  --color-panel-2: #0e1b15;
+  --color-elev: #14261d;
+  --color-line: #1c3228;
+  --color-line-2: #284535;
+  --color-fg: #e2f2e9;
+  --color-dim: #8db29e;
+  --color-faint: #587a68;
+  --color-accent: #a3e635;
+  --color-accent-2: #10b981;
+  --color-on-accent: #04130c;
+  --color-input: #06100c;
+  --color-pop: rgba(10, 20, 16, 0.96);
+  --color-node: rgba(10, 20, 16, 0.95);
+  --color-track: #1f3a2d;
+  --scroll: #22392e;
+  --gutter: #2c4a3b;
+  --graph-dot: #193025;
+  --syn-keyword: #a3e635;
+  --syn-comment: #4b6b5a;
+}
+
+:root[data-theme='ember'] {
+  --color-bg: #0d0806;
+  --color-panel: #160f0b;
+  --color-panel-2: #1d1410;
+  --color-elev: #281b15;
+  --color-line: #33221a;
+  --color-line-2: #4a3125;
+  --color-fg: #f7ece5;
+  --color-dim: #c0a395;
+  --color-faint: #85695c;
+  --color-accent: #fb923c;
+  --color-accent-2: #f43f5e;
+  --color-input: #0f0907;
+  --color-pop: rgba(22, 15, 11, 0.96);
+  --color-node: rgba(22, 15, 11, 0.95);
+  --color-track: #3d281e;
+  --scroll: #3b2a21;
+  --gutter: #54392c;
+  --graph-dot: #2e1f18;
+  --syn-keyword: #fb923c;
+  --syn-def: #fda4af;
+  --syn-comment: #7a5f52;
+}
+
+:root[data-theme='graphite'] {
+  --color-bg: #0a0a0b;
+  --color-panel: #121214;
+  --color-panel-2: #17171a;
+  --color-elev: #1f1f23;
+  --color-line: #26262a;
+  --color-line-2: #38383e;
+  --color-fg: #ededf0;
+  --color-dim: #a1a1aa;
+  --color-faint: #6b6b74;
+  --color-accent: #e4e4e7;
+  --color-accent-2: #a1a1aa;
+  --color-on-accent: #0a0a0b;
+  --color-input: #0c0c0e;
+  --color-pop: rgba(20, 20, 23, 0.97);
+  --color-node: rgba(18, 18, 20, 0.95);
+  --color-track: #2e2e33;
+  --color-dyn: #d4d4d8;
+  --scroll: #2e2e33;
+  --gutter: #3f3f46;
+  --graph-dot: #232327;
+  --glow-a: 3%;
+  --syn-keyword: #e4e4e7;
+  --syn-def: #d4d4d8;
+  --syn-comment: #5f5f68;
+}
+
+:root[data-theme='light'] {
+  --color-bg: #f4f4f9;
+  --color-panel: #ffffff;
+  --color-panel-2: #f4f4fa;
+  --color-elev: #e9e9f3;
+  --color-line: #e3e3ee;
+  --color-line-2: #cdcde0;
+  --color-fg: #1b1b2e;
+  --color-dim: #54546e;
+  --color-faint: #8a8aa3;
+  --color-accent: #d0279b;
+  --color-accent-2: #7c3aed;
+  --color-ok: #059669;
+  --color-warn: #b45309;
+  --color-err: #e11d48;
+  --color-input: #ffffff;
+  --color-pop: rgba(255, 255, 255, 0.98);
+  --color-node: rgba(255, 255, 255, 0.97);
+  --color-hover: rgba(30, 30, 80, 0.05);
+  --color-overlay: rgba(30, 30, 50, 0.3);
+  --color-track: #d4d4e2;
+  --color-field: #1d4ed8;
+  --color-field-muted: #3f4f7a;
+  --color-keyword: #be185d;
+  --color-arg: #a16207;
+  --color-dyn: #6d28d9;
+  --color-sky: #0369a1;
+  --k-object: #7c3aed;
+  --k-input: #b45309;
+  --k-enum: #047857;
+  --k-interface: #0369a1;
+  --k-union: #be185d;
+  --k-scalar: #475569;
+  --scroll: #cfcfe0;
+  --gutter: #b4b4c8;
+  --graph-dot: #d6d6e4;
+  --glow-a: 7%;
+  --syn-keyword: #be185d;
+  --syn-prop: #1d4ed8;
+  --syn-var: #c2410c;
+  --syn-def: #6d28d9;
+  --syn-type: #a16207;
+  --syn-string: #047857;
+  --syn-number: #c2410c;
+  --syn-comment: #9494ad;
+  --syn-attr: #0e7490;
+  --syn-punct: #6b6b85;
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* ambient glow */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  background:
+    radial-gradient(40% 35% at 15% 0%, color-mix(in oklab, var(--color-accent) var(--glow-a), transparent), transparent 70%),
+    radial-gradient(35% 30% at 90% 10%, color-mix(in oklab, var(--color-accent-2) calc(var(--glow-a) * 1.2), transparent), transparent 70%),
+    radial-gradient(40% 40% at 60% 110%, color-mix(in oklab, var(--color-sky) calc(var(--glow-a) * 0.6), transparent), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scroll);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.glass {
+  background: color-mix(in oklab, var(--color-panel) 82%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-line);
+}
+
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@layer components {
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-line-2);
+  background: var(--color-panel-2);
+  color: var(--color-fg);
+  font-weight: 500;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn:hover {
+  border-color: color-mix(in oklab, var(--color-line-2) 70%, var(--color-fg));
+  background: var(--color-elev);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--color-hover);
+  border-color: transparent;
+}
+.btn-primary {
+  background: var(--grad);
+  border: none;
+  color: var(--color-on-accent);
+  box-shadow: 0 4px 18px -4px color-mix(in oklab, var(--color-accent) 55%, transparent);
+}
+.btn-primary:hover {
+  filter: brightness(1.12);
+  background: var(--grad);
+}
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  color: var(--color-dim);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.icon-btn:hover {
+  background: var(--color-hover);
+  color: var(--color-fg);
+}
+
+.input {
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-line-2);
+  background: var(--color-input);
+  color: var(--color-fg);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  min-width: 0;
+}
+.input:focus {
+  border-color: var(--color-accent-2);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent-2) 18%, transparent);
+}
+.input::placeholder {
+  color: var(--color-faint);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--color-line-2);
+  color: var(--color-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: 9px;
+  background: var(--color-input);
+  border: 1px solid var(--color-line);
+}
+.seg > button {
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 6px;
+  color: var(--color-dim);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.seg > button:hover {
+  color: var(--color-fg);
+}
+.seg > button[data-active='true'] {
+  background: var(--color-elev);
+  color: var(--color-fg);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--color-line-2);
+  color: var(--color-dim);
+  background: var(--color-input);
+}
+
+.resizer {
+  flex: 0 0 5px;
+  cursor: col-resize;
+  position: relative;
+  z-index: 5;
+}
+.resizer::after {
+  content: '';
+  position: absolute;
+  inset: 0 2px;
+  background: transparent;
+  transition: background 0.15s;
+}
+.resizer:hover::after,
+.resizer[data-dragging='true']::after {
+  background: var(--color-accent-2);
+}
+.resizer-y {
+  flex: 0 0 5px;
+  cursor: row-resize;
+  position: relative;
+}
+.resizer-y::after {
+  content: '';
+  position: absolute;
+  inset: 2px 0;
+}
+.resizer-y:hover::after {
+  background: var(--color-accent-2);
+}
+
+.tree-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 1px 8px 1px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.tree-row:hover {
+  background: var(--color-hover);
+}
+
+.check {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1.5px solid color-mix(in oklab, var(--color-line-2) 60%, var(--color-dim));
+  display: grid;
+  place-items: center;
+  flex: none;
+  transition: all 0.12s;
+}
+.check[data-on='true'] {
+  background: var(--grad);
+  border-color: transparent;
+  color: var(--color-on-accent);
+}
+
+}
+
+.fade-in {
+  animation: fade-in 0.18s ease-out;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- CodeMirror ---------- */
+.cm-editor {
+  height: 100%;
+  background: transparent !important;
+  font-size: var(--editor-size, 12.5px);
+}
+.cm-editor.cm-focused {
+  outline: none !important;
+}
+.cm-scroller {
+  font-family: var(--font-mono) !important;
+  line-height: 1.6 !important;
+}
+.cm-gutters {
+  background: transparent !important;
+  border-right: none !important;
+  color: var(--gutter) !important;
+}
+.cm-activeLineGutter {
+  background: transparent !important;
+  color: var(--color-dim) !important;
+}
+.cm-activeLine {
+  background: color-mix(in oklab, var(--color-accent-2) 6%, transparent) !important;
+}
+.cm-cursor {
+  border-left-color: var(--color-accent) !important;
+  border-left-width: 2px !important;
+}
+.cm-selectionBackground,
+.cm-focused .cm-selectionBackground,
+.cm-content ::selection {
+  background: color-mix(in oklab, var(--color-accent-2) 30%, transparent) !important;
+}
+.cm-tooltip {
+  background: var(--color-pop) !important;
+  border: 1px solid var(--color-line-2) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.cm-tooltip-autocomplete > ul {
+  font-family: var(--font-mono) !important;
+  max-height: 320px !important;
+}
+.cm-tooltip-autocomplete > ul > li {
+  padding: 3px 10px !important;
+}
+.cm-tooltip-autocomplete > ul > li[aria-selected] {
+  background: color-mix(in oklab, var(--color-accent-2) 25%, transparent) !important;
+  color: var(--color-fg) !important;
+}
+.cm-completionInfo {
+  padding: 8px 10px !important;
+  max-width: 360px;
+}
+.cm-diagnostic {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.cm-foldPlaceholder {
+  background: var(--color-elev) !important;
+  border: none !important;
+  color: var(--color-dim) !important;
+}
+.cm-panels {
+  background: var(--color-panel-2) !important;
+  color: var(--color-fg) !important;
+}
+
+/* ---------- React Flow ---------- */
+.react-flow {
+  --xy-background-color: transparent !important;
+  --xy-edge-stroke: var(--color-line-2);
+}
+.react-flow__attribution {
+  display: none;
+}
+.react-flow__controls {
+  box-shadow: none !important;
+  border: 1px solid var(--color-line-2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: var(--color-panel-2) !important;
+  border-bottom: 1px solid var(--color-line) !important;
+  fill: var(--color-dim) !important;
+}
+.react-flow__controls-button:hover {
+  background: var(--color-elev) !important;
+}
+.react-flow__minimap {
+  background: var(--color-panel) !important;
+  border: 1px solid var(--color-line-2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.react-flow__handle {
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  border: none !important;
+  background: var(--color-faint) !important;
+}
+.react-flow__edge-path {
+  stroke-width: 1.5;
+}
+
+.cm-content {
+  caret-color: var(--color-accent);
+}
+.cm-matchingBracket {
+  background: color-mix(in oklab, var(--color-accent-2) 25%, transparent) !important;
+  outline: none;
+}
+.cm-placeholder {
+  color: var(--color-faint) !important;
+}
+.cm-editor {
+  color: var(--color-fg);
+}
